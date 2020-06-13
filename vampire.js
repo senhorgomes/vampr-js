@@ -32,7 +32,22 @@ class Vampire {
 
   // Returns true if this vampire is more senior than the other vampire. (Who is closer to the original vampire)
   isMoreSeniorThan(vampire) {
-
+    let thisVampSeniority = 0
+    let numberOfVampires = 0;
+    let currentThis = this;
+    let currentVampire = vampire;
+    while (currentThis.creator) {
+      currentThis = currentThis.creator;
+      thisVampSeniority++;
+    }
+    while (currentVampire.creator) {
+      currentVampire = currentVampire.creator;
+      numberOfVampires++;
+    }
+    if (thisVampSeniority < numberOfVampires) {
+      return true
+    }
+  return false
   }
 
   /** Stretch **/
